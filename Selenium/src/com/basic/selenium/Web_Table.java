@@ -1,5 +1,6 @@
 package com.basic.selenium;
 
+import java.time.Duration;
 import java.util.List;
 //import java.util.concurrent.TimeUnit;
 
@@ -9,12 +10,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Web_Table {
+	
+	
 	public static void main(String[] args) throws Throwable {
 
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\sblue\\eclipse-workspace\\Selenium\\driver\\chromedriver.exe");
+				"C:\\Users\\sblue\\git\\Selenium\\Selenium\\driver\\chromedriver.exe");
+		
 		WebDriver driver = new ChromeDriver();
-//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 		driver.get("https://letcode.in/table");
 
@@ -44,7 +49,25 @@ public class Web_Table {
 		WebElement webElement = driver.findElement(By.xpath("//table[@name='table']/tbody/tr[2]/td[4]"));
 		webElement.findElement(By.xpath("//input[@id='second']")).click();
 		
+		//3rd table
 		
-
+		List<WebElement> thead3 = driver.findElements(By.xpath("//table[contains(@class,'mat-sort table')]//thead//th"));
+		for (WebElement head3 : thead3) {
+			System.out.println("Table head: " + head3.getText());
+		}
+		
+		List<WebElement> particularRow = driver.findElements(By.xpath("//table[contains(@class,'mat-sort table')]//tr[2]//td"));
+		for (WebElement row : particularRow) {
+			System.out.println("Particular Row: " + row.getText());
+		}
+		
+		List<WebElement> particularColumn = driver.findElements(By.xpath("//table[contains(@class,'mat-sort table')]//td[1]"));
+		for (WebElement column : particularColumn) {
+			System.out.println("Particular Column: " + column.getText());
+		}
+		
+		WebElement particularData3 = driver.findElement(By.xpath("//table[contains(@class,'mat-sort table')]//tr[2]//td[1]"));
+		System.out.println("particular data:" + particularData3.getText());
+	
 	}
 }

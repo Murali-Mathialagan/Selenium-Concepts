@@ -9,7 +9,7 @@ public class Frame_Concepts {
 
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\sblue\\eclipse-workspace\\Selenium\\driver\\chromedriver.exe");
+				"C:\\Users\\sblue\\git\\Selenium\\Selenium\\driver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("https://letcode.in/test");
@@ -19,15 +19,27 @@ public class Frame_Concepts {
 
 		WebElement iframe = driver.findElement(By.xpath("//iframe[@id='firstFr']"));
 		driver.switchTo().frame(iframe);
+		
 		WebElement fname = driver.findElement(By.xpath("//input[@name='fname']"));
 		fname.sendKeys("Murali");
+		
 		WebElement lname = driver.findElement(By.xpath("//input[@name='lname']"));
 		lname.sendKeys("Mathiyalagan");
 
 		WebElement innerFrame = driver.findElement(By.xpath("//iframe[@class='has-background-white']"));
 		driver.switchTo().frame(innerFrame);
+		
 		WebElement mail = driver.findElement(By.xpath("//input[@name='email']"));
 		mail.sendKeys("muralimariyan8@gmai.com");
+		
+		driver.switchTo().parentFrame(); // switch to the immediate frame
+		
+		WebElement fname1 = driver.findElement(By.xpath("//input[@name='fname']"));
+		fname1.sendKeys("Mariyan");
+		
+		driver.switchTo().defaultContent(); // switch to the main frame
+		
+		
 
 	}
 
