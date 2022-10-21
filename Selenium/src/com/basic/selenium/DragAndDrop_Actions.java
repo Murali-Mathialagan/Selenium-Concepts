@@ -10,7 +10,7 @@ public class DragAndDrop_Actions {
 
 	public static void main(String[] args) throws Throwable {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\sblue\\eclipse-workspace\\Selenium\\driver\\chromedriver.exe");
+				"C:\\Users\\sblue\\git\\Selenium\\Selenium\\driver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 
 		Actions a = new Actions(driver);

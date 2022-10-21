@@ -1,5 +1,6 @@
 package com.project.demo;
 
+import java.time.Duration;
 import java.util.List;
 //import java.util.concurrent.TimeUnit;
 
@@ -20,7 +21,7 @@ public class Let_Code_With_Me {
 				"C:\\Users\\sblue\\eclipse-workspace\\Selenium\\driver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		Actions a = new Actions(driver);
-//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 		driver.get("https://letcode.in/test");
 		driver.manage().window().maximize();
@@ -101,7 +102,7 @@ public class Let_Code_With_Me {
 		} else {
 			System.out.println("single dropdown");
 		}
-		
+
 		WebElement lang = driver.findElement(By.xpath("//select[@id='lang']"));
 		Select s3 = new Select(lang);
 		s3.selectByVisibleText("C#");
@@ -110,7 +111,7 @@ public class Let_Code_With_Me {
 			String text = all_Options.get(i).getText();
 			System.out.println(text);
 		}
-		
+
 		WebElement country = driver.findElement(By.xpath("//select[@id='country']"));
 		Select s4 = new Select(country);
 		s4.selectByValue("India");
@@ -118,54 +119,54 @@ public class Let_Code_With_Me {
 		for (WebElement selectedoption : allSelectedOptions) {
 			System.out.println(selectedoption.getText());
 		}
-		
+
 		driver.navigate().back();
-		
+
 		WebElement alert = driver.findElement(By.xpath("//a[text()='Dialog']"));
 		alert.click();
-		
+
 		WebElement simpleAlert = driver.findElement(By.xpath("//button[text()='Simple Alert']"));
 		simpleAlert.click();
 		driver.switchTo().alert().accept();
-		
+
 		WebElement confirmAlert = driver.findElement(By.xpath("//button[text()='Confirm Alert']"));
 		confirmAlert.click();
 		driver.switchTo().alert().dismiss();
 		String text = confirmAlert.getText();
 		System.out.println(text);
-		
+
 		WebElement promptAlert = driver.findElement(By.xpath("//button[text()='Prompt Alert']"));
 		promptAlert.click();
 		driver.switchTo().alert().sendKeys("Murali");
 		driver.switchTo().alert().accept();
-		
+
 		WebElement modernAlert = driver.findElement(By.xpath("//button[text()='Modern Alert']"));
 		modernAlert.click();
 		WebElement close = driver.findElement(By.xpath("//button[@aria-label='close']"));
 		close.click();
-		
+
 		driver.navigate().back();
-		
+
 		WebElement frame = driver.findElement(By.xpath("//a[.='Inner HTML']"));
 		frame.click();
-		
+
 		WebElement iframe = driver.findElement(By.xpath("//iframe[@id='firstFr']"));
 		driver.switchTo().frame(iframe);
 		WebElement fname = driver.findElement(By.xpath("//input[@name='fname']"));
 		fname.sendKeys("Murali");
 		WebElement lname = driver.findElement(By.xpath("//input[@name='lname']"));
 		lname.sendKeys("Mathiyalagan");
-		
+
 		WebElement innerFrame = driver.findElement(By.xpath("//iframe[@class='has-background-white']"));
 		driver.switchTo().frame(innerFrame);
 		WebElement mail = driver.findElement(By.xpath("//input[@name='email']"));
 		mail.sendKeys("muralimariyan8@gmai.com");
-		
+
 		driver.navigate().back();
-		
+
 		driver.findElement(By.xpath("//a[.='Toggle']")).click();
 		driver.findElement(By.xpath("//input[@id='yes']")).click();
-		
+
 	}
 
 }
